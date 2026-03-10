@@ -89,29 +89,97 @@ export default function RegisterPage() {
       {/* Left Panel - Decorative (Hidden on mobile) */}
       <div className="hidden md:flex flex-col relative items-center justify-center bg-[#000000] p-8 overflow-hidden">
         {/* Top Left Wordmark */}
-        <div className="absolute top-8 left-8">
+        <div className="absolute top-8 left-8 z-30">
           <span className="font-mono text-xs tracking-[0.3em] font-bold text-white uppercase">HUNTLOG</span>
         </div>
 
-        {/* Central Animation */}
-        <div className="relative flex flex-col items-center justify-center">
+        {/* Matrix Characters Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none font-mono text-white select-none z-0">
+          <style>{`
+            @keyframes matrixFade {
+              0%, 100% { opacity: 0.05; }
+              50% { opacity: 0.1; }
+            }
+          `}</style>
+          <div className="absolute top-[15%] left-[25%] text-sm" style={{ animation: "matrixFade 4s infinite 0.5s" }}>0</div>
+          <div className="absolute top-[35%] left-[80%] text-xs" style={{ animation: "matrixFade 3s infinite 1.2s" }}>/</div>
+          <div className="absolute top-[65%] left-[15%] text-sm" style={{ animation: "matrixFade 5s infinite 2.1s" }}>1</div>
+          <div className="absolute top-[85%] left-[70%] text-xs" style={{ animation: "matrixFade 4.5s infinite 0.3s" }}>{'>'}</div>
+          <div className="absolute top-[40%] left-[45%] text-xs" style={{ animation: "matrixFade 3.5s infinite 1.8s" }}>#</div>
+          <div className="absolute top-[18%] left-[65%] text-sm" style={{ animation: "matrixFade 4s infinite 2.5s" }}>\\</div>
+          <div className="absolute top-[75%] left-[35%] text-xs" style={{ animation: "matrixFade 3s infinite 0.7s" }}>{';'}</div>
+          <div className="absolute top-[50%] left-[85%] text-sm" style={{ animation: "matrixFade 5.5s infinite 1.1s" }}>{'<'}</div>
+        </div>
+
+        {/* Scanline Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay">
+          <style>{`
+            @keyframes scanline {
+              0% { transform: translateY(-100%); }
+              100% { transform: translateY(100%); }
+            }
+          `}</style>
           <div 
-            className="mb-8"
-            style={{ 
-              animation: "spin 20s linear infinite, crosshairPulse 4s ease-in-out infinite"
-            }}
-          >
-            <style>{`
-              @keyframes crosshairPulse {
-                0%, 100% { filter: drop-shadow(0 0 10px rgba(124, 58, 237, 0.2)); transform: scale(1); }
-                50% { filter: drop-shadow(0 0 25px rgba(124, 58, 237, 0.6)); transform: scale(1.05); }
-              }
-            `}</style>
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-violet-500 opacity-80">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-              <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="0.5" />
-              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
+            className="absolute inset-0 opacity-[0.04]"
+            style={{ backgroundImage: "repeating-linear-gradient(transparent, transparent 2px, #fff 2px, #fff 4px)" }}
+          />
+          <div 
+            className="absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent"
+            style={{ animation: "scanline 8s linear infinite" }}
+          />
+        </div>
+
+        {/* Central Animation: Glitch Text */}
+        <div className="relative flex flex-col items-center justify-center z-10">
+          <style>{`
+            @keyframes glitch-anim-1 {
+              0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+              20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+              40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, -2px); }
+              60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, 2px); }
+              80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, -1px); }
+              100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, 2px); }
+            }
+            @keyframes glitch-anim-2 {
+              0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+              20% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 2px); }
+              40% { clip-path: inset(70% 0 10% 0); transform: translate(1px, -1px); }
+              60% { clip-path: inset(20% 0 50% 0); transform: translate(-1px, 1px); }
+              80% { clip-path: inset(50% 0 30% 0); transform: translate(2px, -2px); }
+              100% { clip-path: inset(5% 0 80% 0); transform: translate(-2px, 1px); }
+            }
+            .glitch-wrapper {
+              position: relative;
+            }
+            .glitch-text {
+              position: relative;
+              color: rgba(255, 255, 255, 0.8);
+            }
+            .glitch-text::before, .glitch-text::after {
+              content: attr(data-text);
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: #000;
+            }
+            .glitch-text::before {
+              left: 2px;
+              text-shadow: -2px 0 #06b6d4; /* Cyan */
+              animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+            }
+            .glitch-text::after {
+              left: -2px;
+              text-shadow: -2px 0 #7c3aed; /* Violet */
+              animation: glitch-anim-2 3s infinite linear alternate-reverse;
+            }
+          `}</style>
+          
+          <div className="glitch-wrapper mb-2">
+            <h1 className="glitch-text font-mono text-4xl font-bold tracking-widest text-white/80" data-text="HUNTLOG">
+              HUNTLOG
+            </h1>
           </div>
 
           {/* Tagline */}
