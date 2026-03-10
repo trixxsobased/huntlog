@@ -40,17 +40,17 @@ export default async function ProgramsPage() {
       </div>
 
       {allPrograms.length === 0 ? (
-        <div className="border border-border rounded-sm py-12 text-center bg-card">
-          <Building2 className="w-6 h-6 mx-auto text-muted-foreground mb-3" />
-          <p className="text-muted-foreground text-sm font-medium">No programs added yet</p>
-          <p className="text-[10px] text-muted-foreground mt-1 max-w-xs mx-auto">
+        <div className="border border-dashed border-white/5 rounded-sm py-12 text-center bg-[#0a0a0a]">
+          <Building2 className="w-6 h-6 mx-auto text-muted-foreground mb-3 opacity-50" />
+          <p className="text-[#a1a1aa] text-sm font-medium">No programs added yet</p>
+          <p className="text-[10px] text-muted-foreground mt-1 max-w-xs mx-auto font-mono">
             Add programs to autocomplete targets when creating bug reports.
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {allPrograms.map((prog) => (
-            <div key={prog.id} className="border border-border rounded-sm bg-card p-4 flex flex-col justify-between hover:border-violet-500/30 transition-colors">
+            <div key={prog.id} className="border border-white/5 rounded-sm bg-[#0a0a0a] p-3 flex flex-col justify-between hover:border-violet-500/30 transition-colors">
               <div>
                 <h3 className="font-bold text-sm text-foreground truncate">{prog.name}</h3>
                 <div className="flex items-center gap-2 mt-1.5">
@@ -63,7 +63,7 @@ export default async function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
+              <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
                 <div>
                   {prog.url ? (
                     <a

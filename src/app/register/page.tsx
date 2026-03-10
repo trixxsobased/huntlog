@@ -66,17 +66,17 @@ export default function RegisterPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="w-full max-w-sm space-y-6 px-4 text-center">
-          <div className="h-10 w-10 rounded-sm bg-emerald-500/10 flex items-center justify-center mx-auto">
+          <div className="h-10 w-10 rounded-sm bg-emerald-500/10 flex items-center justify-center mx-auto border border-emerald-500/20">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 text-emerald-500">
               <path d="M20 6 9 17l-5-5" />
             </svg>
           </div>
           <h1 className="text-xl font-bold tracking-tight">Check your email</h1>
-          <p className="text-xs text-muted-foreground">
-            We sent a confirmation link to <span className="text-foreground font-medium">{email}</span>.
-            Click the link to activate your account.
+          <p className="text-xs text-muted-foreground/80 leading-relaxed">
+            We sent a confirmation link to <span className="text-foreground font-mono bg-white/5 py-0.5 px-1.5 rounded-sm">{email}</span>.
+            <br />Click the link to activate your account.
           </p>
-          <Button variant="outline" onClick={() => router.push("/login")} className="w-full rounded-sm h-9 border-border">
+          <Button variant="outline" onClick={() => router.push("/login")} className="w-full rounded-sm h-9 border-border bg-[#0a0a0a] hover:bg-white/5">
             Back to sign in
           </Button>
         </div>
@@ -99,9 +99,9 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        <form onSubmit={handleRegister} className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-3">
           <div className="space-y-1.5">
-            <Label htmlFor="email" className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">Email</Label>
+            <Label htmlFor="email" className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-mono font-semibold">Email</Label>
             <Input
               id="email"
               type="email"
@@ -114,7 +114,7 @@ export default function RegisterPage() {
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="password" className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">Password</Label>
+            <Label htmlFor="password" className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-mono font-semibold">Password</Label>
             <Input
               id="password"
               type="password"
@@ -127,7 +127,7 @@ export default function RegisterPage() {
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="confirm-password" className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">Confirm Password</Label>
+            <Label htmlFor="confirm-password" className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-mono font-semibold">Confirm Password</Label>
             <Input
               id="confirm-password"
               type="password"
@@ -146,13 +146,13 @@ export default function RegisterPage() {
             </div>
           )}
 
-          <Button type="submit" className="w-full rounded-sm h-9 bg-violet-600 hover:bg-violet-700" disabled={loading}>
+          <Button type="submit" className="w-full rounded-sm h-9 bg-violet-600 hover:bg-violet-700 border-t border-white/10" disabled={loading}>
             {loading ? "Creating account..." : "Create account"}
           </Button>
 
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-border" />
+              <span className="w-full border-t border-white/10" />
             </div>
             <div className="relative flex justify-center text-[10px] uppercase tracking-wider">
               <span className="bg-background px-2 text-muted-foreground font-mono">

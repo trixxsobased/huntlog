@@ -38,7 +38,7 @@ export default async function BugsPage({
           <h1 className="text-lg font-bold tracking-tight">Bug Reports</h1>
         </div>
         <Link href="/dashboard/bugs/new">
-          <Button size="sm" className="gap-1.5 h-8 text-xs rounded-sm bg-violet-600 hover:bg-violet-700">
+          <Button size="sm" className="gap-1.5 h-8 text-xs rounded-sm bg-violet-600 hover:bg-violet-700 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
               <path d="M5 12h14" />
               <path d="M12 5v14" />
@@ -59,24 +59,25 @@ export default async function BugsPage({
       </div>
 
       {allBugs.length === 0 ? (
-        <div className="border border-border rounded-sm py-12 text-center bg-card">
+        <div className="border border-[#1f1f1f] rounded-sm py-12 text-center bg-[#0a0a0a]">
           <p className="text-muted-foreground text-sm">No bugs found</p>
         </div>
       ) : (
-        <div className="border border-border rounded-sm bg-card divide-y divide-border">
-          {allBugs.map((bug) => (
-            <Link
-              key={bug.id}
-              href={`/dashboard/bugs/${bug.id}`}
-              className="flex items-center gap-3 px-3 py-2.5 hover:bg-accent/50 transition-colors group"
-            >
-              <span className="font-mono text-[10px] text-muted-foreground shrink-0 w-16 md:w-20 truncate">
-                {bug.bug_id}
-              </span>
-              <div className="flex-1 min-w-0">
-                <span className="text-sm font-medium truncate block group-hover:text-foreground">
-                  {bug.title}
+        <div className="border border-[#1f1f1f] rounded-sm bg-[#0a0a0a]">
+          {allBugs.map((bug, index) => (
+            <div key={bug.id}>
+              {index > 0 && <hr className="border-t border-white/5 mx-3" />}
+              <Link
+                href={`/dashboard/bugs/${bug.id}`}
+                className="flex items-center gap-3 px-3 py-2 hover:bg-[#111111] transition-colors group rounded-sm"
+              >
+                <span className="font-mono text-[10px] text-muted-foreground shrink-0 w-16 md:w-20 truncate">
+                  {bug.bug_id}
                 </span>
+                <div className="flex-1 min-w-0">
+                  <span className="text-sm font-medium truncate block group-hover:text-foreground">
+                    {bug.title}
+                  </span>
                 {bug.program_name && (
                   <span className="text-[10px] text-muted-foreground font-mono">
                     {bug.program_name}
@@ -96,6 +97,7 @@ export default async function BugsPage({
                 })}
               </span>
             </Link>
+            </div>
           ))}
         </div>
       )}

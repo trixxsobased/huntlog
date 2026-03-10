@@ -54,7 +54,7 @@ interface BugFormProps {
 }
 
 function FormLabel({ children }: { children: React.ReactNode }) {
-  return <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">{children}</span>;
+  return <span className="text-[10px] uppercase tracking-widest text-[#a1a1aa] font-mono font-semibold">{children}</span>;
 }
 
 export function BugForm({ defaultValues, action, submitLabel, programs }: BugFormProps) {
@@ -267,7 +267,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                     name="expected_behavior"
                     defaultValue={defaultValues?.expected_behavior}
                     placeholder="What should have happened"
-                    className="h-9 rounded-sm border-border bg-card"
+                    className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -277,7 +277,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                     name="actual_behavior"
                     defaultValue={defaultValues?.actual_behavior}
                     placeholder="What actually happens"
-                    className="h-9 rounded-sm border-border bg-card"
+                    className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                   />
                 </div>
             </div>
@@ -300,7 +300,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                 defaultValue={defaultValues?.remediation}
                 placeholder="Brief fix recommendation"
                 rows={2}
-                className="rounded-sm border-border bg-card resize-none"
+                className="rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50 resize-none"
               />
             </div>
           </div>
@@ -318,7 +318,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                 <FormLabel>Program Name</FormLabel>
                 {programs && programs.length > 0 ? (
                   <Select name="program_name" defaultValue={defaultValues?.program_name || ""}>
-                    <SelectTrigger className="h-9 rounded-sm text-sm border-border bg-card">
+                    <SelectTrigger className="h-9 rounded-sm text-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50">
                       <SelectValue placeholder="Select a program" />
                     </SelectTrigger>
                     <SelectContent>
@@ -334,7 +334,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                     name="program_name"
                     defaultValue={defaultValues?.program_name}
                     placeholder="e.g. Uber, Yahoo"
-                    className="h-9 rounded-sm border-border bg-card"
+                    className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                   />
                 )}
               </div>
@@ -345,7 +345,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                   name="target_url"
                   defaultValue={defaultValues?.target_url}
                   placeholder="e.g. https://api.uber.com/v1/user"
-                  className="h-9 rounded-sm border-border bg-card"
+                  className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                 />
               </div>
             </div>
@@ -358,7 +358,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                 defaultValue={defaultValues?.title}
                 required
                 placeholder="e.g. IDOR on /v1/user endpoint"
-                className="h-9 rounded-sm border-border bg-card"
+                className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
               />
             </div>
 
@@ -366,7 +366,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
               <div className="space-y-1.5">
                 <FormLabel>Vulnerability Type</FormLabel>
                 <Select name="vulnerability_type" defaultValue={defaultValues?.vulnerability_type || "xss"}>
-                  <SelectTrigger className="h-9 rounded-sm text-sm border-border bg-card">
+                  <SelectTrigger className="h-9 rounded-sm text-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -385,7 +385,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
               <div className="space-y-1.5">
                 <FormLabel>Status</FormLabel>
                 <Select name="status" defaultValue={defaultValues?.status || "new"}>
-                  <SelectTrigger className="h-9 rounded-sm text-sm border-border bg-card">
+                  <SelectTrigger className="h-9 rounded-sm text-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -415,7 +415,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                   name="h1_report_id"
                   defaultValue={defaultValues?.h1_report_id ?? ""}
                   placeholder="#123456"
-                  className="h-9 rounded-sm border-border bg-card"
+                  className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                 />
               </div>
               <div className="space-y-1.5">
@@ -425,7 +425,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                   name="h1_report_url"
                   defaultValue={defaultValues?.h1_report_url ?? ""}
                   placeholder="https://hackerone.com/reports/..."
-                  className="h-9 rounded-sm border-border bg-card"
+                  className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                 />
               </div>
               <div className="space-y-1.5">
@@ -438,7 +438,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                   step="0.01"
                   defaultValue={defaultValues?.bounty_amount ?? ""}
                   placeholder="0.00"
-                  className="h-9 rounded-sm border-border bg-card"
+                  className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50"
                 />
               </div>
             </div>
@@ -558,7 +558,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
                   onChange={(e) => setCvssString(e.target.value)}
                   placeholder="CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
                   autoComplete="off"
-                  className="h-9 rounded-sm border-border bg-card font-mono text-xs"
+                  className="h-9 rounded-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50 font-mono text-xs"
                 />
               </div>
               {cvssResult.score > 0 && (
@@ -574,7 +574,7 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
               <div className="space-y-1.5 max-w-xs">
                 <FormLabel>Manual Severity</FormLabel>
                 <Select value={manualSeverity} onValueChange={setManualSeverity}>
-                  <SelectTrigger className="h-9 rounded-sm text-sm border-border bg-card">
+                  <SelectTrigger className="h-9 rounded-sm text-sm border-[#1f1f1f] bg-[#0a0a0a] text-xs font-mono focus-visible:ring-1 focus-visible:ring-violet-500/50">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -597,10 +597,10 @@ export function BugForm({ defaultValues, action, submitLabel, programs }: BugFor
       )}
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-4 pb-8">
-        <Button type="submit" disabled={loading} className="w-full sm:w-32 bg-violet-600 hover:bg-violet-700 rounded-sm h-9 text-sm">
+        <Button type="submit" disabled={loading} className="w-full sm:w-auto px-6 bg-violet-600 hover:bg-violet-700 rounded-sm h-9 text-xs font-medium border-t border-white/10 pt-0.5 mt-2 sm:mt-0">
           {loading ? "Saving..." : submitLabel}
         </Button>
-        <Button type="button" variant="ghost" onClick={() => router.push("/dashboard/bugs")} className="w-full sm:w-auto rounded-sm h-9 text-sm text-muted-foreground">
+        <Button type="button" variant="ghost" onClick={() => router.push("/dashboard/bugs")} className="w-full sm:w-auto px-5 rounded-sm h-9 text-[11px] uppercase tracking-widest font-mono text-muted-foreground hover:bg-white/5 border border-transparent">
           Cancel
         </Button>
       </div>

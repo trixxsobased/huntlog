@@ -60,9 +60,9 @@ export default function LoginPage() {
           </p>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-3">
           <div className="space-y-1.5">
-            <Label htmlFor="email" className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">Email</Label>
+            <Label htmlFor="email" className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-mono font-semibold">Email</Label>
             <Input
               id="email"
               type="email"
@@ -75,7 +75,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="password" className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">Password</Label>
+            <Label htmlFor="password" className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-mono font-semibold">Password</Label>
             <Input
               id="password"
               type="password"
@@ -94,13 +94,13 @@ export default function LoginPage() {
             </div>
           )}
 
-          <Button type="submit" className="w-full rounded-sm h-9 bg-violet-600 hover:bg-violet-700" disabled={loading}>
+          <Button type="submit" className="w-full rounded-sm h-9 bg-violet-600 hover:bg-violet-700 border-t border-white/10" disabled={loading}>
             {loading ? "Signing in..." : "Sign in"}
           </Button>
 
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-border" />
+              <span className="w-full border-t border-white/10" />
             </div>
             <div className="relative flex justify-center text-[10px] uppercase tracking-wider">
               <span className="bg-background px-2 text-muted-foreground font-mono">

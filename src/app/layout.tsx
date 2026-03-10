@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Huntlog — Bug Report Tracker",
-  description: "Track and manage vulnerability reports with ease.",
+  title: "Huntlog | Tracker",
+  description: "Minimalist bug hunting lifecycle tracker.",
 };
 
 export default function RootLayout({

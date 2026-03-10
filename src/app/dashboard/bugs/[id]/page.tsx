@@ -12,14 +12,14 @@ import { severityColor, severityScoreColor, statusLabel } from "@/lib/constants"
 
 function CollapsibleSection({ title, children, defaultOpen = false }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) {
   return (
-    <details open={defaultOpen} className="border border-border rounded-sm bg-card group">
-      <summary className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-accent/50 transition-colors">
-        <span className="text-xs font-semibold uppercase tracking-wider font-mono text-muted-foreground">{title}</span>
+    <details open={defaultOpen} className="border border-[#1f1f1f] rounded-sm bg-[#0e0e0e] group">
+      <summary className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-[#111111] transition-colors border-b border-transparent group-open:border-[#1f1f1f]">
+        <span className="text-[10px] font-semibold uppercase tracking-widest font-mono text-[#a1a1aa]">{title}</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 text-muted-foreground chevron-icon">
           <path d="m6 9 6 6 6-6"/>
         </svg>
       </summary>
-      <div className="px-4 pb-4 text-sm leading-relaxed text-muted-foreground">
+      <div className="px-4 py-4 text-sm leading-relaxed text-[#d4d4d8]">
         {children}
       </div>
     </details>
@@ -89,13 +89,13 @@ export default async function BugDetailPage({
         <div className="md:col-span-2 space-y-3">
           {/* CVSS Score Display */}
           {bug.cvss_score > 0 && (
-            <div className="border border-border rounded-sm bg-card p-4">
+            <div className="border border-[#1f1f1f] rounded-sm bg-[#0e0e0e] p-4 w-fit min-w-[200px]">
               <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono mb-1">CVSS Score</p>
               <div className="flex items-baseline gap-2">
                 <span className={`text-4xl font-bold font-mono tabular-nums ${severityScoreColor[bug.severity]}`}>
                   {bug.cvss_score.toFixed(1)}
                 </span>
-                <span className="text-xs text-muted-foreground font-mono">CVSS 3.1</span>
+                <span className="text-[10px] text-muted-foreground font-mono">CVSS 3.1</span>
               </div>
               {bug.cvss_vector && (
                 <p className="text-[10px] font-mono text-muted-foreground mt-2 break-all">{bug.cvss_vector}</p>
@@ -154,8 +154,8 @@ export default async function BugDetailPage({
           )}
 
           {/* Evidence */}
-          <div className="border border-border rounded-sm bg-card p-4">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono mb-3 font-semibold">Evidence Attachments</p>
+          <div className="border border-[#1f1f1f] rounded-sm bg-[#0e0e0e] p-4">
+            <p className="text-[10px] uppercase tracking-widest text-[#a1a1aa] font-mono mb-3 font-semibold">Evidence Attachments</p>
             <div className="overflow-x-auto">
               <AttachmentUpload bugId={bug.id} existingAttachments={attachments || []} />
             </div>
@@ -165,43 +165,43 @@ export default async function BugDetailPage({
         {/* Right column: metadata + actions */}
         <div className="md:col-span-1 space-y-3">
           {/* Details card */}
-          <div className="border border-border rounded-sm bg-card p-4 space-y-3">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">Details</p>
+          <div className="border border-[#1f1f1f] rounded-sm bg-[#0a0a0a] p-3 space-y-3">
+            <p className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-mono font-semibold">Details</p>
 
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground text-xs">Bug ID</span>
-                <span className="font-mono text-xs">{bug.bug_id}</span>
+            <div className="space-y-1.5 text-sm">
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground/70 text-[10px] uppercase font-mono">Bug ID</span>
+                <span className="font-mono text-[11px] text-[#e4e4e7]">{bug.bug_id}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground text-xs">Status</span>
-                <span className="text-xs font-medium">{statusLabel[bug.status]}</span>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground/70 text-[10px] uppercase font-mono">Status</span>
+                <span className="text-[11px] font-medium text-[#e4e4e7]">{statusLabel[bug.status]}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground text-xs">Severity</span>
-                <span className="text-xs capitalize">{bug.severity}</span>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground/70 text-[10px] uppercase font-mono">Severity</span>
+                <span className="text-[11px] capitalize text-[#e4e4e7]">{bug.severity}</span>
               </div>
               {bug.target_url && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-xs">Target</span>
-                  <span className="font-mono text-[10px] text-right max-w-[60%] break-all">{bug.target_url}</span>
+                <div className="flex justify-between items-start gap-2 pt-1 border-t border-white/5">
+                  <span className="text-muted-foreground/70 text-[10px] uppercase font-mono shrink-0">Target</span>
+                  <span className="font-mono text-[10px] text-right break-all text-violet-300">{bug.target_url}</span>
                 </div>
               )}
               {bug.h1_report_id && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-xs">H1 Report</span>
-                  <span className="font-mono text-xs">#{bug.h1_report_id}</span>
+                <div className="flex justify-between items-center pt-1 border-t border-white/5">
+                  <span className="text-muted-foreground/70 text-[10px] uppercase font-mono">H1 Report</span>
+                  <span className="font-mono text-[11px] text-[#e4e4e7]">#{bug.h1_report_id}</span>
                 </div>
               )}
               {bug.bounty_amount !== null && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-xs">Bounty</span>
-                  <span className="text-xs font-semibold text-emerald-400 font-mono">${bug.bounty_amount.toLocaleString()}</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-muted-foreground/70 text-[10px] uppercase font-mono">Bounty</span>
+                  <span className="text-[11px] font-semibold text-emerald-400 font-mono">${bug.bounty_amount.toLocaleString()}</span>
                 </div>
               )}
-              <div className="flex justify-between">
-                <span className="text-muted-foreground text-xs">Reported</span>
-                <span className="text-xs text-muted-foreground">
+              <div className="flex justify-between items-center pt-1 border-t border-white/5">
+                <span className="text-muted-foreground/70 text-[10px] uppercase font-mono">Reported</span>
+                <span className="text-[11px] font-mono text-muted-foreground">
                   {new Date(bug.created_at).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",

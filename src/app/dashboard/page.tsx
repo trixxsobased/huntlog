@@ -21,7 +21,7 @@ export default async function DashboardPage() {
   const stats = [
     { label: "Total", value: total.toString() },
     { label: "Triaged", value: allBugs.filter((b) => b.status === "triaged").length.toString(), color: "text-violet-400" },
-    { label: "Resolved", value: allBugs.filter((b) => b.status === "resolved").length.toString(), color: "text-emerald-400" },
+    { label: "Resolved", value: allBugs.filter((b) => b.status === "resolved").length.toString(), color: "text-emerald-400/90" },
     { label: "Dupe Rate", value: duplicateRate },
   ];
 
@@ -38,7 +38,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-2 border border-border rounded-sm bg-card p-3 md:p-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-2 border border-[#1f1f1f] rounded-sm bg-[#0e0e0e] p-3 md:p-4 shadow-sm">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
             <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-mono font-semibold">{stat.label}</p>
@@ -55,7 +55,7 @@ export default async function DashboardPage() {
             href="/dashboard/bugs"
             className="text-[10px] md:text-xs uppercase font-mono text-violet-400 hover:text-violet-300 transition-colors flex items-center gap-1 group font-semibold"
           >
-            View all <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            View all <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
           </Link>
         </div>
 
@@ -69,12 +69,12 @@ export default async function DashboardPage() {
             </p>
           </div>
         ) : (
-          <div className="border border-border rounded-sm bg-card divide-y divide-border">
+          <div className="border border-[#1f1f1f] rounded-sm bg-[#0a0a0a] divide-y divide-[#1f1f1f]">
             {recentBugs.map((bug) => (
               <Link
                 key={bug.id}
                 href={`/dashboard/bugs/${bug.id}`}
-                className="flex items-center gap-3 px-3 py-2.5 hover:bg-accent/50 transition-colors group"
+                className="flex items-center gap-3 px-3 py-1.5 hover:bg-[#111111] transition-colors group"
               >
                 <span className="font-mono text-[10px] text-muted-foreground shrink-0 w-16 md:w-20 truncate">
                   {bug.bug_id}

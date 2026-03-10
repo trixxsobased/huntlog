@@ -65,10 +65,10 @@ export function Sidebar({ userEmail }: { userEmail: string }) {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex fixed left-0 top-0 z-40 h-screen w-[220px] flex-col border-r border-border bg-card">
+      <aside className="hidden md:flex fixed left-0 top-0 z-40 h-screen w-[220px] flex-col border-r border-border bg-[#030303]">
         <div className="flex h-14 items-center px-5 shrink-0 border-b border-border">
           <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-widest uppercase font-mono text-foreground">HUNTLOG</span>
+            <span className="text-xs font-bold tracking-[0.25em] uppercase font-mono text-foreground">HUNTLOG</span>
             <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-mono">Bug Hunting Tracker</span>
           </div>
         </div>
@@ -85,10 +85,10 @@ export function Sidebar({ userEmail }: { userEmail: string }) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-sm px-3 py-2 text-sm font-medium transition-colors",
+                  "flex items-center gap-3 px-3 py-2 text-[11px] font-mono tracking-wide uppercase transition-colors border-l-2",
                   isActive
-                    ? "bg-violet-500/10 text-violet-400"
-                    : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                    ? "border-violet-500 text-violet-400 bg-white/[0.02]"
+                    : "border-transparent text-muted-foreground hover:bg-white/[0.02] hover:text-foreground hover:border-border"
                 )}
               >
                 {item.icon}
@@ -100,12 +100,12 @@ export function Sidebar({ userEmail }: { userEmail: string }) {
 
         <div className="border-t border-border p-3 shrink-0">
           <div className="flex items-center gap-2.5 px-2 py-1.5">
-            <div className="h-7 w-7 shrink-0 rounded-sm bg-violet-600 flex items-center justify-center text-[10px] font-bold text-white font-mono">
+            <div className="h-6 w-6 shrink-0 rounded-sm bg-violet-600 flex items-center justify-center text-[9px] font-bold text-white font-mono">
               {userEmail.charAt(0).toUpperCase()}
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <p className="text-xs font-medium text-foreground truncate">{userEmail.split('@')[0]}</p>
-              <p className="text-[10px] text-muted-foreground truncate">{userEmail}</p>
+              <p className="text-[11px] font-medium text-foreground truncate">{userEmail.split('@')[0]}</p>
+              <p className="text-[9px] text-muted-foreground truncate">{userEmail}</p>
             </div>
           </div>
           <Button
@@ -125,7 +125,7 @@ export function Sidebar({ userEmail }: { userEmail: string }) {
       </aside>
 
       {/* Mobile Bottom Nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card/95 backdrop-blur-md">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-[#030303]/95 backdrop-blur-md">
         <div className="flex items-center justify-around h-14">
           {navItems.map((item) => {
             const isActive =
